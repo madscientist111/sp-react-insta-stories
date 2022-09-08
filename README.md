@@ -1,11 +1,11 @@
 ![Main image](https://i.imgur.com/OAL12S5.jpg)
 
-<h1 style="margin: 0" align="center">react-insta-stories</h1>
+<h1 style="margin: 0" align="center">sp-react-insta-stories</h1>
 <p align="center">A React component for Instagram like stories</p>
 
-<p align="center"><a href="https://mohitk05.github.io/react-insta-stories/">Homepage</a> • <a href="https://discord.gg/CBUC5c3">Discord</a></p>
+<p align="center"><a href="https://github.com/madscientist111/sp-react-insta-stories/">Homepage</a></p>
 
-<div align="center"><a href="https://www.npmjs.com/package/react-insta-stories"><img alt="NPM" src="https://img.shields.io/npm/v/react-insta-stories.svg"></a>&nbsp;<a href="https://standardjs.com"><img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a>&nbsp;<a href="#backers"><img alt="Backers on Open Collective" src="https://opencollective.com/react-insta-stories/backers/badge.svg"></a>&nbsp;<a href="#sponsors"><img alt="Sponsors on Open Collective" src="https://opencollective.com/react-insta-stories/sponsors/badge.svg"></a></div>
+<div align="center"><a href="https://www.npmjs.com/package/sp-react-insta-stories"><img alt="NPM" src="https://img.shields.io/npm/v/sp-react-insta-stories.svg"></a>&nbsp;<a href="https://standardjs.com"><img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a></div>
 
 <br>
 
@@ -14,7 +14,7 @@
 ## Install
 
 ```bash
-npm install --save react-insta-stories
+npm install --save sp-react-insta-stories
 ```
 
 ## Demo
@@ -25,19 +25,19 @@ See it in action here: https://mohitk05.github.io/react-insta-stories/
 ## Usage
 
 ```jsx
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Stories from 'react-insta-stories';
+import Stories from "sp-react-insta-stories";
 
 const App = () => {
-	return (
-		<Stories
-			stories={stories}
-			defaultInterval={1500}
-			width={432}
-			height={768}
-		/>
-	);
+  return (
+    <Stories
+      stories={stories}
+      defaultInterval={1500}
+      width={432}
+      height={768}
+    />
+  );
 };
 ```
 
@@ -97,10 +97,10 @@ storyContent: {
 
 To allow reusable components to display story UI, you can pass in pre-built or custom-built components in a special manner to leverage this behavior. Each renderer object has two properties:
 
--   `renderer` - This is the UI component that will be rendered whenever the object matches certain conditions.
--   `tester` - This is a function that tests whether the renderer is suitable for the current story. It receives the current story object to render and returns an object with two properties:
-    -   `condition` - This states if the renderer matches the current story's criteria (a boolean).
-    -   `priority` - A number denoting the priority of the current renderer. E.g. priority of 2 is less than a 5, and if two renderers have condition = `true`, their priorities will be compared and the one with higher priority will be selected.
+- `renderer` - This is the UI component that will be rendered whenever the object matches certain conditions.
+- `tester` - This is a function that tests whether the renderer is suitable for the current story. It receives the current story object to render and returns an object with two properties:
+  - `condition` - This states if the renderer matches the current story's criteria (a boolean).
+  - `priority` - A number denoting the priority of the current renderer. E.g. priority of 2 is less than a 5, and if two renderers have condition = `true`, their priorities will be compared and the one with higher priority will be selected.
 
 So essentially a simple renderer would look like this:
 (you may also refer the inbuilt [Image renderer](src/renderers/Image.tsx))
@@ -109,15 +109,15 @@ So essentially a simple renderer would look like this:
 // Renderer.js
 
 export const renderer = ({ story, action, isPaused, config }) => {
-	return <div>Hello!</div>;
+  return <div>Hello!</div>;
 };
 
 export const tester = (story) => {
-	return {
-		// Use this renderer only when the story type is video
-		condition: story.type === 'video',
-		priority: 3,
-	};
+  return {
+    // Use this renderer only when the story type is video
+    condition: story.type === "video",
+    priority: 3,
+  };
 };
 ```
 
@@ -132,7 +132,7 @@ const { width, height, loader, storyStyles } = config;
 
 List of public renderers:
 
--   Add one here
+- Add one here
 
 ### Higher Order Components
 
@@ -142,7 +142,7 @@ This is a wrapper component which includes the UI and logic for displaying a 'Se
 It takes in two props - `story` and `action`.
 
 ```jsx
-const { WithSeeMore } from 'react-insta-stories';
+const { WithSeeMore } from 'sp-react-insta-stories';
 
 const CustomStoryContent = ({ story, action }) => {
 	return <WithSeeMore story={story} action={action}>
@@ -157,7 +157,7 @@ const CustomStoryContent = ({ story, action }) => {
 You can also send custom 'See More' component for the collapsed state. While using `WithSeeMore`, pass in a `customCollapsed` prop with a value of your custom component. It will receive a `toggleMore` and `action` prop to handle clicks on the See More link.
 
 ```jsx
-const { WithSeeMore } from 'react-insta-stories';
+const { WithSeeMore } from 'sp-react-insta-stories';
 
 const customCollapsedComponent = ({ toggleMore, action }) =>
 	<h2 onClick={() => {
@@ -185,11 +185,11 @@ If not implementing a custom UI, you can send the `customCollapsedComponent` com
 
 ```jsx
 const stories = [
-	{
-		url: 'some.url',
-		seeMore: SeeMoreComponent, // when expanded
-		seeMoreCollapsed: customCollapsedComponent, // when collapsed
-	},
+  {
+    url: "some.url",
+    seeMore: SeeMoreComponent, // when expanded
+    seeMoreCollapsed: customCollapsedComponent, // when collapsed
+  },
 ];
 ```
 
@@ -198,7 +198,7 @@ const stories = [
 This named export can be used to include the header UI on any custom story. Simply wrap the component with this HOC and pass in some props.
 
 ```jsx
-const { WithHeader } from 'react-insta-stories';
+const { WithHeader } from 'sp-react-insta-stories';
 
 const CustomStoryContent = ({ story, config }) => {
 	return <WithHeader story={story} globalHeader={config.header}>
@@ -220,12 +220,12 @@ If you wish to have a bare minimum setup and only need to show image stories, yo
 This will show all your images as stories.
 
 ```js
-import Stories from 'react-insta-stories';
+import Stories from "sp-react-insta-stories";
 
 const stories = [
-	'https://example.com/pic.jpg',
-	'data:image/jpg;base64,R0lGODl....',
-	'https://mohitkarekar.com/icon.png',
+  "https://example.com/pic.jpg",
+  "data:image/jpg;base64,R0lGODl....",
+  "https://mohitkarekar.com/icon.png",
 ];
 
 return () => <Stories stories={stories} />;
@@ -243,11 +243,11 @@ Each story can be set to have a different duration.
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		url: 'https://example.com/pic2.jpg',
-		duration: 5000,
-	},
+  "https://example.com/pic.jpg",
+  {
+    url: "https://example.com/pic2.jpg",
+    duration: 5000,
+  },
 ];
 ```
 
@@ -257,16 +257,16 @@ Adds a header to the story.
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		url: 'https://example.com/pic2.jpg',
-		duration: 5000,
-		header: {
-			heading: 'Mohit Karekar',
-			subheading: 'Posted 30m ago',
-			profileImage: 'https://picsum.photos/100/100',
-		},
-	},
+  "https://example.com/pic.jpg",
+  {
+    url: "https://example.com/pic2.jpg",
+    duration: 5000,
+    header: {
+      heading: "Mohit Karekar",
+      subheading: "Posted 30m ago",
+      profileImage: "https://picsum.photos/100/100",
+    },
+  },
 ];
 ```
 
@@ -276,19 +276,19 @@ Adds a click to see more option at the bottom of the story. When present, shows 
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		url: 'https://example.com/pic2.jpg',
-		duration: 5000,
-		seeMore: SeeMore, // some component
-	},
-	{
-		url: 'https://example.com/pic3.jpg',
-		duration: 2000,
-		seeMore: ({ close }) => {
-			return <div onClick={close}>Hello, click to close this.</div>;
-		},
-	},
+  "https://example.com/pic.jpg",
+  {
+    url: "https://example.com/pic2.jpg",
+    duration: 5000,
+    seeMore: SeeMore, // some component
+  },
+  {
+    url: "https://example.com/pic3.jpg",
+    duration: 2000,
+    seeMore: ({ close }) => {
+      return <div onClick={close}>Hello, click to close this.</div>;
+    },
+  },
 ];
 ```
 
@@ -298,12 +298,12 @@ If provided `type: video`, then the component loads a video player. All expected
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		url: 'https://example.com/vid.mp4',
-		duration: 5000, // ignored
-		type: 'video',
-	},
+  "https://example.com/pic.jpg",
+  {
+    url: "https://example.com/vid.mp4",
+    duration: 5000, // ignored
+    type: "video",
+  },
 ];
 ```
 
@@ -317,49 +317,53 @@ You can render custom JSX inside a story by sending a `content` property inside 
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		content: (props) => (
-			<div style={{ background: 'pink', padding: 20 }}>
-				<h1 style={{ marginTop: '100%', marginBottom: 0 }}>🌝</h1>
-				<h1 style={{ marginTop: 5 }}>A custom title can go here.</h1>
-			</div>
-		),
-	},
+  "https://example.com/pic.jpg",
+  {
+    content: (props) => (
+      <div style={{ background: "pink", padding: 20 }}>
+        <h1 style={{ marginTop: "100%", marginBottom: 0 }}>🌝</h1>
+        <h1 style={{ marginTop: 5 }}>A custom title can go here.</h1>
+      </div>
+    ),
+  },
 ];
 ```
 
 The content property can hold any React component. For further control, it receives two important props:
 
--   `action` It allows you to fire play/pause actions.
--   `isPaused` Holds true is the story is currently paused, false otherwise.
+- `action` It allows you to fire play/pause actions.
+- `isPaused` Holds true is the story is currently paused, false otherwise.
 
 ```jsx
 const stories = [
-	'https://example.com/pic.jpg',
-	{
-		content: ({ action, isPaused }) => {
-			useEffect(() => {
-				setTimeout(() => {
-					action('pause');
-					setTimeout(() => {
-						action('play');
-					}, 2000);
-				}, 2000);
-			}, []);
-			return (
-				<div style={{ background: 'pink', padding: 20 }}>
-					<h1 style={{ marginTop: '100%', marginBottom: 0 }}>🌝</h1>
-					<h1>{isPaused ? 'Paused' : 'Playing'}</h1>
-				</div>
-			);
-		},
-	},
+  "https://example.com/pic.jpg",
+  {
+    content: ({ action, isPaused }) => {
+      useEffect(() => {
+        setTimeout(() => {
+          action("pause");
+          setTimeout(() => {
+            action("play");
+          }, 2000);
+        }, 2000);
+      }, []);
+      return (
+        <div style={{ background: "pink", padding: 20 }}>
+          <h1 style={{ marginTop: "100%", marginBottom: 0 }}>🌝</h1>
+          <h1>{isPaused ? "Paused" : "Playing"}</h1>
+        </div>
+      );
+    },
+  },
 ];
 ```
 
 In the code above, on render a timeout will be set which would fire a 'pause' action after 2 seconds. Again after 2 seconds, a 'play' action would be fired.
 In the JSX, `isPaused` is used to display the current play state.
+
+## Updates:
+
+- It will start again from index 0 in case there is an array out of bound error for Story Array.
 
 ## Development
 
@@ -374,45 +378,10 @@ To develop this package locally, you can follo these steps:
 
 This will start a hot-reloading setup with a live example.
 
-<!-- Testing -->
-
 ## Thanks To
 
--   [@SamHambert](https://github.com/SamHerbert/SVG-Loaders) for the default spinner SVG
-
-## Websites using `react-insta-stories`
-
--   [Corsza](http://corsza.com/)
--   [TLDR Stories](https://www.producthunt.com/posts/tldr-stories-a0c16732-ba1e-4a40-b420-8582b9128bac)
-
-Do you use `react-insta-stories` too? Raise a PR to include your site in this list!
-
-## Contributors
-
-This project exists thanks to all the people who contribute.
-<a href="https://github.com/mohitk05/react-insta-stories/graphs/contributors"><img src="https://opencollective.com/react-insta-stories/contributors.svg?width=890&button=false" /></a>
-
-## Backers
-
-Thank you to all our backers! 🙏 [Become a backer](https://opencollective.com/react-insta-stories#backer)
-
-<a href="https://opencollective.com/react-insta-stories#backers" target="_blank"><img src="https://opencollective.com/react-insta-stories/backers.svg?width=890"></a>
-
-## Sponsors
-
-Support this project by becoming a sponsor. [Become a sponsor](https://opencollective.com/react-insta-stories#sponsor)
-
-<a href="https://opencollective.com/react-insta-stories/sponsor/0/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/1/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/2/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/3/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/4/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/5/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/6/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/7/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/8/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/react-insta-stories/sponsor/9/website" target="_blank"><img src="https://opencollective.com/react-insta-stories/sponsor/9/avatar.svg"></a>
+- [@mohitk05](https://github.com/mohitk05) - author of original package
 
 ## License
 
-MIT © [mohitk05](https://github.com/mohitk05)
+MIT © [shoo](https://github.com/madscientist111)

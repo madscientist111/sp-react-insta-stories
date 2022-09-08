@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohitk05/react-insta-stories.git"
+    "url": "git+https://github.com/madscientist111/sp-react-insta-stories.git"
   },
   "keywords": [
     "stories",
@@ -28,9 +28,9 @@
   "author": "mohitk05",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mohitk05/react-insta-stories/issues"
+    "url": "https://github.com/madscientist111/sp-react-insta-stories/issues"
   },
-  "homepage": "https://github.com/mohitk05/react-insta-stories#readme",
+  "homepage": "https://github.com/madscientist111/sp-react-insta-stories#readme",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
